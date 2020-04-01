@@ -71,9 +71,10 @@
     <%= form.check_box :featured %>
 </div>
 
+<% default_cat = product.category.nil? ? Category.first.id : @product.category.id %>
 <div class="field">
-    <%= form.label :category%>
-    <%= form.select :category_id, options_from_collection_for_select(Category.all, :id, :heading, @product.category.id) %>
+    <%= form.label :category_id %>
+    <%= form.select :category_id, options_from_collection_for_select(Category.all, :id, :heading, default_cat) %>
 </div>
 
 <div class="field">
